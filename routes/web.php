@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('student.com',[StudentsController::class,'getview']);
+Route::get('payment.com',[StudentsController::class,'getpayment']);
+Route::view('login','login');
+Route::view('contact','contact');
+
+
+//query buiders Route start
+Route::get('db.com',[StudentsController::class,'getDataBaseUsers']);
+Route::get('update.com',[StudentsController::class,'updateUserProfile']);
+Route::get('insert.com',[StudentsController::class,'insertUsersRecord']);
+Route::get('insertone.com',[StudentsController::class,'singleUserRecord']);
+Route::get('delete.com',[StudentsController::class,'deleteUser']);
+//end laravel query builder
+
+
+//larave aggregate begin
+Route::get('count.com',[StudentsController::class,'gettotalUser']);
+Route::get('average.com',[StudentsController::class,'findAverage']);
+
+
+
