@@ -145,7 +145,7 @@ class StudentsController extends Controller
         }
     }
 
-    //finding an average,min, max ,and sum of the users function
+    //finding an average max ,and sum of the users function
 
     function findAverage(){
         $averageFinder = DB::table('students')->avg('id');
@@ -156,5 +156,8 @@ class StudentsController extends Controller
             dd(error('something went wrong'));
         }
     }
+
+    //finding the minimum value from the database table
+
 }
  
