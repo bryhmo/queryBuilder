@@ -158,6 +158,22 @@ class StudentsController extends Controller
     }
 
     //finding the minimum value from the database table
+    function find_Min_Max_Sum_Value(){
+        $minValue = DB::table('students')->sum('studentid');
+        // ->min('id');
+        // ->min('firstname');
+        // ->min('studentid');
+        // ->max('id');
+        // ->max('firstname');
+        // ->sum('id');
+        if($minValue){
+            return "<h1> value from the DataBase table is: $minValue</h1>";
+        }
+        else{
+            return "<h1>sorry i was unable to get the Value</h1>";
+            // ->sum('firstname');
+        }
+    }
 
 }
  

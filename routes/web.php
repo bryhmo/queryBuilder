@@ -36,6 +36,7 @@ Route::get('delete.com',[StudentsController::class,'deleteUser']);
 //larave aggregate begin
 Route::get('count.com',[StudentsController::class,'gettotalUser']);
 Route::get('average.com',[StudentsController::class,'findAverage']);
+Route::get('min.com',[StudentsController::class,'find_Min_Max_Sum_Value']);
 
 
-
+//Joins in laravel
