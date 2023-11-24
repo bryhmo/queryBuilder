@@ -183,7 +183,7 @@ class StudentsController extends Controller
         ->get();
         return $innerdata;
     }
-
+//selection of specific field using the innerjoin
     function innerjoin2(){
         $data2 = DB::table('customers')
         ->join('orders',
@@ -204,6 +204,31 @@ class StudentsController extends Controller
             return "<h1>sorry i was unable to get the data</h1>";
         }
         
+    }
+    function innerJoinMultiple(){
+        $users = DB::table('orders')
+        ->join('customer', 'orders.customer_id', '=', 'customers.customer_id')
+            ->join
+            (
+                'employees', 
+                'orders.employee_id',
+                 '=', 'employees.employee_id'
+            )
+            ->select
+            (
+                'orders.*', 
+                'customers.contactname',
+                'customers.address',
+                'employees.lastname',
+                'employees.birthday'
+
+            )
+            ->get();
+    }
+
+    //LARAVEL LEFT JOIN 
+    function leftjoin(){
+
     }
 
 }
