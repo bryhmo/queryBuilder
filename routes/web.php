@@ -40,3 +40,6 @@ Route::get('min.com',[StudentsController::class,'find_Min_Max_Sum_Value']);
 
 
 //Joins in laravel
+//route for the inner joins
+Route::get('getinner.com',[StudentsController::class,'innerjoin']);
+Route::get('getinner2.com',[StudentsController::class,'innerjoin2']);

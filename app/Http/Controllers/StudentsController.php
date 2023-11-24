@@ -173,6 +173,37 @@ class StudentsController extends Controller
             return "<h1>sorry i was unable to get the Value</h1>";
             // ->sum('firstname');
         }
+
+    }
+//inner join with the customers and the orders table
+    function innerjoin(){
+        $innerdata = DB::table('customers')
+        ->join('orders','customers.customer_id','=','orders.customer_id')
+        ->select('customers.*','orders.orderdate','orders.shipper_id')
+        ->get();
+        return $innerdata;
+    }
+
+    function innerjoin2(){
+        $data2 = DB::table('customers')
+        ->join('orders',
+        'customers.customer_id','=','orders.customer_id')
+        ->select(
+            'customers.contactname',
+            'customers.address',
+            'customers.city',
+            'orders.orderdate',
+            'orders.shipper_id',
+            )
+        ->get();
+        if($data2){
+            return dd($data2);
+        }
+        else
+        {
+            return "<h1>sorry i was unable to get the data</h1>";
+        }
+        
     }
 
 }
