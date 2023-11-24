@@ -207,12 +207,13 @@ class StudentsController extends Controller
     }
     function innerJoinMultiple(){
         $users = DB::table('orders')
-        ->join('customer', 'orders.customer_id', '=', 'customers.customer_id')
+        ->join('customers', 'orders.customer_id', '=', 'customers.customer_id')
             ->join
             (
                 'employees', 
                 'orders.employee_id',
-                 '=', 'employees.employee_id'
+                 '=', 
+                 'employees.employee_id'
             )
             ->select
             (
@@ -224,11 +225,42 @@ class StudentsController extends Controller
 
             )
             ->get();
+
+        if($users){
+            dd($users);
+        }
+        else
+        {
+            return "sorry i was unable to get multiple tables";
+        }
     }
 
     //LARAVEL LEFT JOIN 
-    function leftjoin(){
+    function leftjoins(){
+        $mydata = DB::table('customers')
+        ->leftjoin('orders', 'customers.customer_id','=','orders.customer_id')
+        ->get();
+        if($mydata){
+            return json_encode($mydata);
+        }
+        else
+        {
+            return "sorry leftjoining was not successful";
+        }
+    }
 
+    function rightjoins(){
+        $mydata2 = DB::table('orders')
+        ->rightJoin('orderdetails', 'orders.order_id','=','orderdetails.order_id')
+        ->get();
+        if($mydata2)
+        {
+            dd($mydata2);
+        }
+        else 
+        {
+            return "sorry i was unable to right join the tables";
+        }
     }
 
 }
