@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\fluentStringsController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+//fluent string route
+Route::get('after.com',[fluentStringsController::class,'after']);
+Route::get('before.com',[fluentStringsController::class,'before']);
+
+
+//students route
 Route::get('student.com',[StudentsController::class,'getview']);
 Route::get('payment.com',[StudentsController::class,'getpayment']);
 Route::view('login','login');
@@ -44,3 +54,4 @@ Route::get('min.com',[StudentsController::class,'find_Min_Max_Sum_Value']);
 Route::get('getinner.com',[StudentsController::class,'innerjoin']);
 Route::get('getinner2.com',[StudentsController::class,'innerjoin2']);
 Route::get('joininnermultiple.com',[StudentsController::class,'innerJoinMultiple']);
+
