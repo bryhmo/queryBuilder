@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -263,5 +264,51 @@ class StudentsController extends Controller
         }
     }
 
+    //crossJoin
+    function getCrossJion(){
+        $sizes = DB::table('customers')
+            ->crossJoin('orders')
+            ->get();
+
+        if($sizes){
+            dd($sizes);
+        }
+        else
+        {
+            return "sorry i was unable to cross join";
+        }
+
+    }
+
+    //Advanced Join Clauses
+    function joinAdvance1(){
+        $ja = DB::table('shippers')
+        ->join('orders',function(JoinClause $join){
+            $join->on(
+                'shippers.shipper_id',
+                '=',
+                'oders.shipper_id'
+            );
+        })
+        ->get();
+    }
+
+    //advance join clause 2
+    function joinAdvance2(){
+       $ja2 = DB::table('customers')
+        ->join('orders', function (JoinClause $join) {
+            $join->on('customers.customer_id', '=', 'orders.customer_id')
+                 ->where('orders.customer_id', '>', 5);
+        })->get();
+
+        //check for the server to see the command
+        if($ja2){
+            return dd($ja2);
+        }
+        else
+        {
+            return 'sorry i was unable to retrieve the record';
+        }
+    }
 }
  
