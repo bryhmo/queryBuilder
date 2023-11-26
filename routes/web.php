@@ -18,18 +18,22 @@ use App\Http\controllers\EmailController;
 |
 */
 
-
-Route::get('myemail',[EmailController::class,'MailSender'])->name('getEmail');
-Route::view('myemail.com','email');
+//WORKING WITH THE LARAVEL EMAIL
+Route::view('contactmi','contactus')->name('contact.web');
+Route::post('sendmail',[EmailController::class,'MailSender'])->name('send.email');
+Route::view('myemail.com','email')->name('email.template');
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//lincolnSiwes
 Route::view('website','web')->name('main');
 Route::view('register.com','register');
 Route::view('login.com','loginme');
+
+
 //route model binding ::::: route
 Route::get('bind.com/{key}',[CustomersController::class,'routeBinding']);
 Route::get('bind.com/{key:customer_id}',[CustomersController::class,'routeBinding']);
