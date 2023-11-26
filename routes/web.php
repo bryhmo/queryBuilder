@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\fluentStringsController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use App\Http\controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,20 @@ use Illuminate\Support\Str;
 */
 
 
+Route::get('myemail',[EmailController::class,'MailSender'])->name('getEmail');
+Route::view('myemail.com','email');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::view('website','web')->name('main');
+Route::view('register.com','register');
+Route::view('login.com','loginme');
+//route model binding ::::: route
+Route::get('bind.com/{key}',[CustomersController::class,'routeBinding']);
+Route::get('bind.com/{key:customer_id}',[CustomersController::class,'routeBinding']);
 
 
 //fluent string route

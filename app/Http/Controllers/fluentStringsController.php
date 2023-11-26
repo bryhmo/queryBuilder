@@ -9,45 +9,45 @@ class fluentStringsController extends Controller
 {
   //FLUENT STRING STRING IN LARAVEL
 
-    //after
-    function after(){
-        $after = Str::of("This is my name")
-                ->after('This is');
-        if($after){
-            return dd($after);
+        //after
+        function after(){
+            $after = Str::of("This is my name")
+                    ->after('This is');
+            if($after){
+                return dd($after);
+            }
+            else
+            {
+                return "error!!! something went wrong ";
+            }
+
         }
-        else
-        {
-            return "error!!! something went wrong ";
+
+        //before
+        function before(){
+            $slice2 = Str::of('This is my name')->before('name');
+            return  dd($slice2);
         }
 
-    }
 
-    //before
-    function before(){
-        $slice2 = Str::of('This is my name')->before('name');
-        return  dd($slice2);
-    }
+        //before
+        function afterLast(){
+            $slice2 = Str::of('App\Http\Controllers\Controller')->afterLast('\\');
+            return  dd($slice2);
+        }
 
-
-    //before
-    function afterLast(){
-        $slice2 = Str::of('App\Http\Controllers\Controller')->afterLast('\\');
-        return  dd($slice2);
-    }
-
-    //before
-    function append(){
-        $string = Str::of('Taylor')->append(' Otwell');
-        return  dd($string);
-    }
+        //before
+        function append(){
+            $string = Str::of('Taylor')->append(' Otwell');
+            return  dd($string);
+        }
 
 
-    //before
-    function beforeLast(){
-        $slice2 = Str::of('This is my name')->beforeLast('is');
-        return  dd($slice2);
-    }
+        //before
+        function beforeLast(){
+            $slice2 = Str::of('This is my name')->beforeLast('is');
+            return  dd($slice2);
+        }
 
 
         //before
