@@ -17,11 +17,12 @@ class customersMail extends Mailable
      * Create a new message instance.
      */
 
-    public $body,$subject;
-    public function __construct($body,$subject)
+    public $subject,$body;
+    public function __construct($subject,$body)
     {
-        $this->body = $body;
         $this->subject = $subject;
+        $this->body = $body;
+        
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\Email2Controller;
 use App\Http\Controllers\fluentStringsController;
 use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +25,10 @@ Route::post('sendmail',[EmailController::class,'MailSender'])->name('send.email'
 Route::view('myemail.com','email')->name('email.template');
 
 
-Route::get('/', function () {
+Route::get('/', [Email2Controller::class,'sendMail']);
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 //lincolnSiwes
 Route::view('website','web')->name('main');
