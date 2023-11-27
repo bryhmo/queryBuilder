@@ -7,7 +7,8 @@ use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use App\Http\controllers\EmailController;
-
+use App\Mail\SampleMail;
+use App\Models\Student;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,16 +20,31 @@ use App\Http\controllers\EmailController;
 |
 */
 
+//working with the MarkDown Mail Template
+
+
+Route::get('naming', function () {
+    $invoice = App\Models\Student::find(1);
+ 
+    return new App\Mail\SampleMail($invoice);
+});
+
+Route::get('mail.com',function(){
+    return new SampleMail();
+});
+
+
+
 //WORKING WITH THE LARAVEL EMAIL
 Route::view('contactmi','contactus')->name('contact.web');
 Route::post('sendmail',[EmailController::class,'MailSender'])->name('send.email');
 Route::view('myemail.com','email')->name('email.template');
 
 
-Route::get('/', [Email2Controller::class,'sendMail']);
-/* Route::get('/', function () {
+//Route::get('/', [Email2Controller::class,'sendMail']);
+Route::get('/', function () {
     return view('welcome');
-}); */
+});
 
 //lincolnSiwes
 Route::view('website','web')->name('main');
