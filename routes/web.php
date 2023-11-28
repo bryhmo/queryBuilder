@@ -21,18 +21,9 @@ use App\Models\Student;
 */
 
 //working with the MarkDown Mail Template
-
-
-Route::get('naming', function () {
-    $invoice = App\Models\Student::find(1);
- 
-    return new App\Mail\SampleMail($invoice);
-});
-
 Route::get('mail.com',function(){
     return new SampleMail();
 });
-
 
 
 //WORKING WITH THE LARAVEL EMAIL
@@ -90,3 +81,4 @@ Route::get('getinner.com',[StudentsController::class,'innerjoin']);
 Route::get('getinner2.com',[StudentsController::class,'innerjoin2']);
 Route::get('joininnermultiple.com',[StudentsController::class,'innerJoinMultiple']);
 
+Route::view('test','test');
