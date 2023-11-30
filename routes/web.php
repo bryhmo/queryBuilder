@@ -20,6 +20,18 @@ use App\Models\Student;
 |
 */
 
+
+
+
+
+//Multiple Database connections Route 
+//using query builder for multiple database
+Route::get('multidb',[CustomersController::class,'StudentList'])->name('customer.data');
+Route::get('emp',[CustomersController::class,'getEmployeesRecord'])->name('semester.data');
+//using model for multiple database
+Route::get('getcustom',[CustomersController::class,'getCustomers'])->name('customer.get');
+Route::get('getsemest',[CustomersController::class,'getSemester'])->name('semester.get');
+
 //working with the MarkDown Mail Template
 Route::get('mail.com',function(){
     return new SampleMail();
